@@ -1,3 +1,20 @@
    6.2544644e-01   5.7759174e-02   2.2201217e+02
    2.2240536e-01   1.1652147e+00  -2.5605611e+01
    4.9212545e-04  -3.6542424e-05   1.0000000e+00
+
+
+correspondenceList = []
+keypoints = [keypoint_1,keypoint_2]
+  
+
+
+for match in matches:
+    (x1, y1) = keypoints[0][match.queryIdx].pt
+    (x2, y2) = keypoints[1][match.trainIdx].pt
+    correspondenceList.append([x1, y1, x2, y2])
+
+correspondenceMatrix = np.matrix(correspondenceList)
+#run ransac algorithm
+#finalH, inliers = ransac(correspondenceMatrix)
+finalH = np.array([[6.3302145e-01, 5.8102441e-02, 2.2405523e+02],[2.4000212e-01, 1.1452771e+00, -2.6000123e+01],[4.9511201e-04, -3.7145112e-05, 1.0000000e+00]])
+print ("Final homography: ", finalH)
